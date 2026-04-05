@@ -1,7 +1,14 @@
 //use latest selliunm chrome driver
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers; // Requires 'DotNetSeleniumExtras.WaitHelpers' NuGet package
+using System.Security.Cryptography;
+using System.Text;
+using System.Text.Json;
+using OtpNet; // For TOTP
 
-
-private async void btn_shoonya_connect_Click(object sender, EventArgs e)
+private async void get_auth_access_token()
 {
     try
     {
