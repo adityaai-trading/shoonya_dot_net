@@ -91,7 +91,7 @@ private async void btn_shoonya_connect_Click(object sender, EventArgs e)
                 string jsonPayload = System.Text.Json.JsonSerializer.Serialize(payload);
                 var content = new StringContent($"jData={jsonPayload}", Encoding.UTF8, "application/x-www-form-urlencoded");
 
-                // USE Await here instead of .Result to prevent deadlocks
+                
                 var response = _httpClient.PostAsync(TOKEN_URL, content).GetAwaiter().GetResult();
                 string result = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
                 Console.WriteLine(result);
