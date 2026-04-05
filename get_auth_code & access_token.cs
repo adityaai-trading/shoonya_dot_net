@@ -8,8 +8,13 @@ using System.Text;
 using System.Text.Json;
 using OtpNet; // For TOTP
 
+
+private static readonly HttpClient _httpClient = new HttpClient();
+
 private async void get_auth_access_token()
 {
+    
+    
     try
     {
         // 1. Generate TOTP (Fine on UI thread)
@@ -61,9 +66,6 @@ private async void get_auth_access_token()
                 wait.Until(d => d.Url.Contains("code="));
 
                 string authCode = driver.Url.Split('=').Last();
-
-                // 4. Update UI
-                this.Invoke(new Action(() => { ent_shoonya_code.Text = authCode; }));
 
                 // Success! Now close it.
                 driver.Quit();
